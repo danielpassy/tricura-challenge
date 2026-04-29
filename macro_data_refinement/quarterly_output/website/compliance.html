@@ -1,0 +1,96 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance Annex — Arturic Industries</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">Arturic Industries</div>
+    <div class="motto">Purpose. Precision. Progress.</div>
+  </header>
+
+  <nav class="site-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="directory.html">Directory</a></li>
+      <li><a href="manual.html">Processing Manual</a></li>
+      <li><a href="compliance.html">Compliance Annex</a></li>
+      <li><a href="layout.html">Facility Layout</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>Compliance Annex</h1>
+    <p>This annex contains supplementary compliance rules that extend the standard validation framework documented in the <a href="manual.html">Processing Manual</a>. Access is restricted to authorized personnel.</p>
+
+    <hr class="divider">
+
+    <div id="access-gate">
+      <div class="access-form">
+        <label for="access-code">Facility Access Code</label>
+        <input type="text" id="access-code" name="access-code" autocomplete="off" placeholder="Enter code">
+        <button type="button" id="submit-btn">Submit</button>
+        <p class="access-error" id="error-msg" style="display:none">Access denied. Verify your facility designation.</p>
+      </div>
+
+      <p class="notice restricted">This section is restricted. If you do not possess a valid facility access code, contact your supervisor or the Office of Compliance.</p>
+
+      <p class="notice" style="font-size: 0.85rem; margin-top: 1.5rem;">Your facility access code corresponds to your assigned location. Consult your facility photograph for orientation.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Arturic Industries — Internal Use Only — Facility Portal v4.7.1
+  </footer>
+
+  <script>
+    (function() {
+      var H = "38b19f2e76c9fa1e3ab74c80fb3e95b3cd761ce39b0e2359b6ac15e012220907";
+      var SUFFIX = "arturic";
+
+      function hex(buf) {
+        var out = "";
+        var u8 = new Uint8Array(buf);
+        for (var i = 0; i < u8.length; i++) out += ("0" + u8[i].toString(16)).slice(-2);
+        return out;
+      }
+
+      function constantTimeEqual(a, b) {
+        if (a.length !== b.length) return false;
+        var diff = 0;
+        for (var i = 0; i < a.length; i++) diff |= (a.charCodeAt(i) ^ b.charCodeAt(i));
+        return diff === 0;
+      }
+
+      function verifyAccess() {
+        var input = document.getElementById("access-code").value.trim().toUpperCase();
+        if (!input) { document.getElementById("error-msg").style.display = "block"; return; }
+        crypto.subtle.digest("SHA-256", new TextEncoder().encode(input))
+          .then(function(hash) {
+            var inputHex = hex(hash);
+            if (!constantTimeEqual(inputHex, H)) {
+              document.getElementById("error-msg").style.display = "block";
+              return;
+            }
+            return crypto.subtle.digest("SHA-256", new TextEncoder().encode(input + SUFFIX));
+          })
+          .then(function(pathHash) {
+            if (!pathHash) return;
+            var pathHex = hex(pathHash) + ".html";
+            window.location.href = pathHex;
+          })
+          .catch(function() { document.getElementById("error-msg").style.display = "block"; });
+      }
+
+      document.getElementById("submit-btn").onclick = verifyAccess;
+      document.getElementById("access-code").addEventListener("keydown", function(e) {
+        if (e.key === "Enter") { e.preventDefault(); verifyAccess(); }
+      });
+    })();
+  </script>
+
+
+
+</body></html>
