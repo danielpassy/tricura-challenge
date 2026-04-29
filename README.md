@@ -24,25 +24,25 @@ After dedupe and validation, the final sum was `1023118.20`.
 
 ## Anomalies
 
-The number shows which rule it did not comply with
+The number shows which rule it did not comply with. Duplicate session warnings show the file name and the rule number.
 
 Sessions considered (after dedupe): 400
 Anomalies found: 521
-- 11: duplicate session_id SA-0046: discarding SA-0046.csv (later than SA-0046.csv)
-- 11: duplicate session_id WB-0007: discarding WB-0007.txt and keeping WB-0007.txt (earlier)
-- 11: duplicate session_id MDR-0018: discarding MDR-0018.mdr and keeping MDR-0018.mdr (earlier)
-- 11: duplicate session_id MDR-0025: discarding MDR-0025.mdr and keeping MDR-0025.mdr (earlier)
-- 11: duplicate session_id MDR-0070: discarding MDR-0070.mdr and keeping MDR-0070.mdr (earlier)
-- 11: duplicate session_id MDR-0081: discarding MDR-0081.mdr and keeping MDR-0081.mdr (earlier)
-- 11: duplicate session_id MDR-0094: discarding MDR-0094.mdr and keeping MDR-0094.mdr (earlier)
-- 11: duplicate session_id MDR-0098: discarding MDR-0098.mdr and keeping MDR-0098.mdr (earlier)
-- 11: duplicate session_id MDR-0100: discarding MDR-0100.mdr and keeping MDR-0100.mdr (earlier)
-- 11: duplicate session_id MDR-0105: discarding MDR-0105.mdr and keeping MDR-0105.mdr (earlier)
-- 11: duplicate session_id MDR-0128: discarding MDR-0128.mdr and keeping MDR-0128.mdr (earlier)
-- 11: duplicate session_id MDR-0136: discarding MDR-0136.mdr and keeping MDR-0136.mdr (earlier)
-- 11: duplicate session_id MDR-0150: discarding MDR-0150.mdr and keeping MDR-0150.mdr (earlier)
-- 11: duplicate session_id MDR-0152: discarding MDR-0152.mdr and keeping MDR-0152.mdr (earlier)
-- 11: duplicate session_id MDR-0159: discarding MDR-0159.mdr and keeping MDR-0159.mdr (earlier)
+- SA-0046.csv: 11: duplicate session_id SA-0046: discarding SA-0046.csv (later than SA-0046.csv)
+- WB-0007.txt: 11: duplicate session_id WB-0007: discarding WB-0007.txt and keeping WB-0007.txt (earlier)
+- MDR-0018.mdr: 11: duplicate session_id MDR-0018: discarding MDR-0018.mdr and keeping MDR-0018.mdr (earlier)
+- MDR-0025.mdr: 11: duplicate session_id MDR-0025: discarding MDR-0025.mdr and keeping MDR-0025.mdr (earlier)
+- MDR-0070.mdr: 11: duplicate session_id MDR-0070: discarding MDR-0070.mdr and keeping MDR-0070.mdr (earlier)
+- MDR-0081.mdr: 11: duplicate session_id MDR-0081: discarding MDR-0081.mdr and keeping MDR-0081.mdr (earlier)
+- MDR-0094.mdr: 11: duplicate session_id MDR-0094: discarding MDR-0094.mdr and keeping MDR-0094.mdr (earlier)
+- MDR-0098.mdr: 11: duplicate session_id MDR-0098: discarding MDR-0098.mdr and keeping MDR-0098.mdr (earlier)
+- MDR-0100.mdr: 11: duplicate session_id MDR-0100: discarding MDR-0100.mdr and keeping MDR-0100.mdr (earlier)
+- MDR-0105.mdr: 11: duplicate session_id MDR-0105: discarding MDR-0105.mdr and keeping MDR-0105.mdr (earlier)
+- MDR-0128.mdr: 11: duplicate session_id MDR-0128: discarding MDR-0128.mdr and keeping MDR-0128.mdr (earlier)
+- MDR-0136.mdr: 11: duplicate session_id MDR-0136: discarding MDR-0136.mdr and keeping MDR-0136.mdr (earlier)
+- MDR-0150.mdr: 11: duplicate session_id MDR-0150: discarding MDR-0150.mdr and keeping MDR-0150.mdr (earlier)
+- MDR-0152.mdr: 11: duplicate session_id MDR-0152: discarding MDR-0152.mdr and keeping MDR-0152.mdr (earlier)
+- MDR-0159.mdr: 11: duplicate session_id MDR-0159: discarding MDR-0159.mdr and keeping MDR-0159.mdr (earlier)
 - SA-0066.csv (session): 12: weekend timestamp: 2025-12-21 10:28:00
 - SA-0068.csv (session): P6: timestamp outside Q4 2025: 2026-01-29 11:00:00
 - SA-0070.csv (session): P2: invalid processor: 'Cross.R'

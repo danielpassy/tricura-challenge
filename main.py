@@ -283,13 +283,13 @@ def dedupe_sessions(sessions: list[Session]) -> tuple[list[Session], list[str]]:
             by_id[s.session_id] = s
         elif s.timestamp < existing.timestamp:
             anomalies.append(
-                f"11: duplicate session_id {s.session_id}: discarding {existing.path.name} "
+                f"{s.path.name}: 11: duplicate session_id {s.session_id}: discarding {existing.path.name} "
                 f"and keeping {s.path.name} (earlier)"
             )
             by_id[s.session_id] = s
         else:
             anomalies.append(
-                f"11: duplicate session_id {s.session_id}: discarding {s.path.name} "
+                f"{s.path.name}: 11: duplicate session_id {s.session_id}: discarding {s.path.name} "
                 f"(later than {existing.path.name})"
             )
     return list(by_id.values()), anomalies
